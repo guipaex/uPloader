@@ -1,66 +1,23 @@
 @import "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Sora:wght@100;200;300;400;500;600;700;800&display=swap";
 @import "./styles/variables";
 
+* {
+  font-family: "Poppins", sans-serif;
+}
+
 .App {
   background: #fff;
-  width: 25.125rem;
-  height: 29.3125rem;
+  width: 25.1rem;
+  height: 29.3rem;
   padding: 2.25rem 2rem;
-  margin: 20% auto;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   border-radius: 0.75rem;
   box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.1);
-  text-align: center;
   box-sizing: border-box;
-}
-
-.container {
-  &__title {
-    color: $Gray_2;
-    font-size: 1.125rem;
-    font-weight: 500;
-    letter-spacing: -0.03938rem;
-  }
-  &__subtitle {
-    color: $Gray_3;
-    font-size: 0.625rem;
-    font-weight: 500;
-    letter-spacing: -0.02188rem;
-  }
-}
-
-.dropContainer {
-  width: 21rem;
-  height: 13rem;
-  border-radius: 0.75rem;
-  margin: auto;
-  padding: 2rem;
-  border: 1px dashed #97bef4;
-  background: #f6f8fb;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  &__img {
-    width: 7.13rem;
-  }
-  &__txt {
-    color: $Gray_4;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: -0.02625rem;
-  }
-}
-
-.uploadButton {
-  width: 6.3rem;
-  height: 2rem;
-  color: #fff;
-  text-align: center;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: -0.02625rem;
-  border-radius: 0.5rem;
-  border: none;
-  background: $Blue_1;
 }

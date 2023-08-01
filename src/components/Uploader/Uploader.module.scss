@@ -1,0 +1,45 @@
+@import "../../styles/variables.scss";
+
+.container {
+  width: 21.1rem;
+  height: 24.8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  &__title {
+    color: $Gray_2;
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+  &__subtitle {
+    color: $Gray_3;
+    font-size: 0.625rem;
+    font-weight: 500;
+  }
+}
+
+.dropContainer {
+  &__img {
+    width: 7.13rem;
+  }
+  &__txt {
+    color: $Gray_4;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: -0.02625rem;
+  }
+}
+
+.uploadButton {
+  cursor: pointer;
+  width: 6.3rem;
+  height: 2rem;
+  color: #fff;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: $Blue_1;
+}
