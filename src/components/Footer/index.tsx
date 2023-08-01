@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       Created by{" "}
-      <a className={styles.footer__link} href='https://github.com/guipaex' target='_blank'>
+      <a className={styles.footer__link} href='https://github.com/guipaex'>
         @guipaex
       </a>{" "}
       - devChallenges.io
