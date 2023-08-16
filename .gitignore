@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+src/imageUpload.tsx
+src/uploader.tsx
 
 # testing
 /coverage
