@@ -1,9 +1,8 @@
-import React from "react";
 import styles from "./App.module.scss";
 import Footer from "./components/Footer";
 import Uploader from "./components/Uploader";
 
-function App() {
+export default function App() {
   return (
     <>
       <div className={styles.App}>
@@ -13,5 +12,3 @@ function App() {
     </>
   );
 }
-
-export default App;

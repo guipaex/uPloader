@@ -11,9 +11,9 @@ export default function Uploader() {
       <button
         className={styles.uploadButton}
         onClick={() => {
-          const inputElement = document.querySelector<HTMLInputElement>(".input-btn");
-          if (inputElement) {
-            inputElement.click();
+          const inputButton = document.querySelector<HTMLInputElement>(".input-btn");
+          if (inputButton) {
+            inputButton.click();
           }
         }}
       >

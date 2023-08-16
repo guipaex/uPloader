@@ -5,7 +5,6 @@
   width: 21rem;
   height: 13rem;
   border-radius: 0.75rem;
-  padding: 2rem;
   border: 1px dashed #97bef4;
   background: #f6f8fb;
   display: flex;
@@ -13,7 +12,11 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-
+  &__drop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   &__img {
     width: 7.13rem;
   }
@@ -22,6 +25,13 @@
     font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: -0.02625rem;
+  }
+  &__preview {
+    width: 21rem;
+    height: 13rem;
+    border-radius: 0.75rem;
+    background-size: contain;
+    box-sizing: border-box;
   }
 }
 
