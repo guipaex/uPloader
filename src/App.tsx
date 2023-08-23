@@ -16,7 +16,6 @@ export default function App() {
 
   useEffect(() => {
     setURL(data);
-
     if (data) {
       setStatus("loading");
       setTimeout(() => {
@@ -25,13 +24,11 @@ export default function App() {
     } else {
       setStatus("waiting");
     }
-    console.log(status);
   }, [data]);
 
   return (
     <>
       <div className={styles.App}>
-        {" "}
         {status === "waiting" && <Uploader getURL={getURL} />}
         {status === "loading" && <Loading />}
         {status === "done" && <Share data={data} />}
