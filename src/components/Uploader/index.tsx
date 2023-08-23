@@ -1,7 +1,8 @@
 import styles from "./Uploader.module.scss";
 import Dropzone from "../Dropzone";
 
-export default function Uploader() {
+export default function Uploader({ getURL }: any) {
+  const data = "Tá subindo";
   return (
     <div className={styles.container}>
       <h1 className={styles.container__title}>Upload your image</h1>
@@ -11,6 +12,7 @@ export default function Uploader() {
       <button
         className={styles.uploadButton}
         onClick={() => {
+          getURL(data);
           const inputButton = document.querySelector<HTMLInputElement>(".input-btn");
           if (inputButton) {
             inputButton.click();
