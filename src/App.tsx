@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 export default function App() {
   const [data, setData] = useState("");
   const [, setURL] = useState("");
+  const [status, setStatus] = useState("waiting");
 
   const getURL = (childdata: any) => {
     setData(childdata);
@@ -15,12 +16,26 @@ export default function App() {
 
   useEffect(() => {
     setURL(data);
-    <Loading />;
+
+    if (data) {
+      setStatus("loading");
+      setTimeout(() => {
+        setStatus("done");
+      }, 1500);
+    } else {
+      setStatus("waiting");
+    }
+    console.log(status);
   }, [data]);
 
   return (
     <>
-      <div className={styles.App}> {data ? <Share data={data} /> : <Uploader getURL={getURL} />}</div>
+      <div className={styles.App}>
+        {" "}
+        {status === "waiting" && <Uploader getURL={getURL} />}
+        {status === "loading" && <Loading />}
+        {status === "done" && <Share data={data} />}
+      </div>
       <Footer />
     </>
   );
