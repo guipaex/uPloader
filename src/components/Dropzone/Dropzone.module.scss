@@ -1,17 +1,6 @@
 @import "../../styles/variables.scss";
 
 .container {
-  cursor: pointer;
-  width: 21rem;
-  height: 13rem;
-  border-radius: 0.75rem;
-  border: 1px dashed #97bef4;
-  background: #f6f8fb;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
   &__drop {
     display: flex;
     flex-direction: column;

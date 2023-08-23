@@ -3,34 +3,24 @@ import Footer from "./components/Footer";
 import Loading from "./components/Loading";
 import Share from "./components/Share";
 import Uploader from "./components/Uploader";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function App() {
   const [data, setData] = useState("");
+  const [, setURL] = useState("");
 
   const getURL = (childdata: any) => {
     setData(childdata);
-    console.log(childdata);
   };
 
-  function render(params: any) {
-    switch (params) {
-      case "x":
-        <Uploader getURL={getURL} />;
-        break;
-
-      default:
-        break;
-    }
-  }
+  useEffect(() => {
+    setURL(data);
+    <Loading />;
+  }, [data]);
 
   return (
     <>
-      <div className={styles.App}>
-        {<Uploader getURL={getURL} />}
-        {/* <Loading /> */}
-        {/* <Share setURL={url} /> */}
-      </div>
+      <div className={styles.App}> {data ? <Share data={data} /> : <Uploader getURL={getURL} />}</div>
       <Footer />
     </>
   );

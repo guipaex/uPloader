@@ -7,6 +7,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  // background-color: aqua;
   &__title {
     color: $Gray_2;
     font-size: 1.125rem;
@@ -20,6 +21,23 @@
 }
 
 .dropContainer {
+  cursor: pointer;
+  width: 21rem;
+  height: 13rem;
+  border-radius: 0.75rem;
+  border: 1px dashed #97bef4;
+  background: #f6f8fb;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+
+  &__dropArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   &__img {
     width: 7.13rem;
   }
@@ -30,16 +48,49 @@
     letter-spacing: -0.02625rem;
   }
 }
-
+.dragActive {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  &__txt {
+    position: absolute;
+    color: white;
+    font-weight: 600;
+    z-index: 1;
+  }
+  &__background {
+    background-color: $Blue_1;
+    position: absolute;
+    width: 0rem;
+    height: 0rem;
+    border-radius: 50%;
+    animation: growCircle 150ms 100ms ease-out forwards;
+    z-index: 0;
+  }
+}
 .uploadButton {
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5rem 1rem;
+  flex-shrink: 0;
+  border-radius: 0.5rem;
   cursor: pointer;
-  width: 6.3rem;
-  height: 2rem;
   color: #fff;
   text-align: center;
   font-size: 0.75rem;
+  font-style: normal;
   font-weight: 500;
-  border-radius: 0.5rem;
-  border: none;
+  line-height: normal;
+  letter-spacing: -0.02625rem;
+
   background-color: $Blue_1;
+}
+
+@keyframes growCircle {
+  to {
+    width: 12rem;
+    height: 12rem;
+  }
 }
