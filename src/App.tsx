@@ -10,7 +10,7 @@ export default function App() {
   const [, setURL] = useState("");
   const [status, setStatus] = useState("waiting");
 
-  const getURL = (childdata: any) => {
+  const getURL = (childdata: string) => {
     setData(childdata);
   };
 

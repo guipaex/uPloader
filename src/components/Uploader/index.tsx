@@ -4,31 +4,36 @@ import Axios from "axios";
 import React, { useCallback, useState } from "react";
 import { ReactComponent as ImageSample } from "../../assets/image.svg";
 
-export default function Uploader({ getURL }: any) {
-  const [image, setImage] = useState<any>("");
+interface Props {
+  getURL: (data: string) => void;
+}
 
-  const imgUpload = async (file: any) => {
+export default function Uploader({ getURL }: Props) {
+  const [image, setImage] = useState<string>("");
+
+  const imgUpload = async (file: File) => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", "guipaex");
-    let data = "";
+    let data: string = "";
 
     await Axios.post("https://api.cloudinary.com/v1_1/guipaex/image/upload", formData).then((response) => {
       data = response.data["secure_url"];
       getURL(data);
+      console.log(data);
     });
     return data;
   };
 
-  const imgSubmit = async (e: any) => {
+  const imgSubmit = async (file: File) => {
     try {
-      setImage(await imgUpload(e));
+      setImage(await imgUpload(file));
     } catch (error) {
       console.error(error);
     }
   };
 
-  const onDrop = useCallback((acceptedFiles: any) => {
+  const onDrop = useCallback((acceptedFiles: File[]) => {
     let img = acceptedFiles[0];
     imgSubmit(img);
   }, []);
@@ -36,7 +41,7 @@ export default function Uploader({ getURL }: any) {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
-      "image/jpg": [".jpg"],
+      "image/*": [".jpg", ".png", ".jpeg"],
     },
   });
 
@@ -54,7 +59,7 @@ export default function Uploader({ getURL }: any) {
           <div>
             {image ? (
               <div>
-                <img src={image} className={styles.container__preview} alt={image.name} />
+                <img src={image} className={styles.container__preview} alt={image} />
               </div>
             ) : (
               <div className={styles.dropContainer__dropArea}>

@@ -2,7 +2,11 @@ import styles from "./Share.module.scss";
 import { MdCheckCircle } from "react-icons/md";
 import { useState } from "react";
 
-export default function Share({ data }: any) {
+interface ShareProps {
+  data: string;
+}
+
+export default function Share({ data }: ShareProps) {
   const [url] = useState<string>(data ? data : "https://www.euax.com.br/wp-content/uploads/2019/10/Teste.png");
 
   return (
