@@ -40,7 +40,9 @@ export default function Uploader({ getURL }: Props) {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
-      "image/*": [".jpg", ".png", ".jpeg"],
+      "image/jpg": [".jpg"],
+      "image/jpeg": [".jpeg"],
+      "image/png": [".png"],
     },
   });
 
