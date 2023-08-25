@@ -20,7 +20,6 @@ export default function Uploader({ getURL }: Props) {
     await Axios.post("https://api.cloudinary.com/v1_1/guipaex/image/upload", formData).then((response) => {
       data = response.data["secure_url"];
       getURL(data);
-      console.log(data);
     });
     return data;
   };
