@@ -1,6 +1,7 @@
 import styles from "./Uploader.module.scss";
 import { useDropzone } from "react-dropzone";
 import Axios from "axios";
+import SnackBar from "../SnackBar";
 import React, { useCallback, useState } from "react";
 import { ReactComponent as ImageSample } from "../../assets/image.svg";
 
