@@ -1,28 +1,32 @@
 import { createContext, useState } from "react";
 
 export type ImageProps = {
-  stat: string;
+  state: string;
   url: string;
 };
 
 type StatusContextProps = {
-  status: ImageProps;
-  handleStatus: (image: ImageProps) => void;
+  img: ImageProps;
+  handleStatus: (img: ImageProps) => void;
+};
+
+const INITIAL_VALUE: ImageProps = {
+  state: "Waiting",
+  url: "null",
 };
 
 const StatusContext = createContext<StatusContextProps>({} as StatusContextProps);
 
 const StatusProvider = ({ children }: { children: React.ReactNode }) => {
-  const [status, setStatus] = useState<ImageProps>({ stat: "waiting", url: "null" });
+  const [img, setIMG] = useState<ImageProps>(INITIAL_VALUE);
 
-  const handleStatus = (image: ImageProps) => {
-    setStatus(image);
-    console.log(image);
-  };
+  function handleStatus(image: ImageProps) {
+    setIMG(image);
+  }
   return (
     <StatusContext.Provider
       value={{
-        status,
+        img,
         handleStatus,
       }}
     >
