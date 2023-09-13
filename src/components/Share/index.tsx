@@ -3,12 +3,11 @@ import { MdCheckCircle } from "react-icons/md";
 import { useState } from "react";
 import SnackBar from "../SnackBar";
 
-interface ShareProps {
-  data: string;
-}
+type Link = {
+  url: string;
+};
 
-export default function Share({ data }: ShareProps) {
-  const [url] = useState<string>(data ? data : "https://www.euax.com.br/wp-content/uploads/2019/10/Teste.png");
+export default function Share(link: Link) {
   const [snackView, setSnackView] = useState(false);
   function copyLink(link: string) {
     navigator.clipboard.writeText(link);
@@ -24,13 +23,13 @@ export default function Share({ data }: ShareProps) {
         <MdCheckCircle className={styles.container__icon} />
         Upload Succesfully!
       </h1>
-      <img src={url} className={styles.preview} alt='Uploaded'></img>
+      <img src={link.url} className={styles.preview} alt='Uploaded'></img>
       <SnackBar status={snackView}>
         Link copied to clipboard!
         <MdCheckCircle />
       </SnackBar>
-      <div className={styles.imgLink} onClick={() => copyLink(url)}>
-        <p className={styles.imgLink__link}>{url}</p>
+      <div className={styles.imgLink} onClick={() => copyLink(link.url)}>
+        <p className={styles.imgLink__link}>{link.url}</p>
         <button className={styles.imgLink__btn}>Copy link</button>
       </div>
     </div>

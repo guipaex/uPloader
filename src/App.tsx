@@ -3,35 +3,18 @@ import Footer from "./components/Footer";
 import Loading from "./components/Loading";
 import Share from "./components/Share";
 import Uploader from "./components/Uploader";
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { StatusContext } from "./context";
 
 export default function App() {
-  const [data, setData] = useState("");
-  const [, setURL] = useState("");
-  const [status, setStatus] = useState("waiting");
-
-  const getURL = (childdata: string) => {
-    setData(childdata);
-  };
-
-  useEffect(() => {
-    setURL(data);
-    if (data) {
-      setStatus("loading");
-      setTimeout(() => {
-        setStatus("done");
-      }, 1500);
-    } else {
-      setStatus("waiting");
-    }
-  }, [data]);
+  const { img } = useContext(StatusContext);
 
   return (
     <>
       <div className={styles.App}>
-        {status === "waiting" && <Uploader getURL={getURL} />}
-        {status === "loading" && <Loading />}
-        {status === "done" && <Share data={data} />}
+        {img.state === "Waiting" && <Uploader />}
+        {img.state === "Uploading" && <Loading />}
+        {img.state === "Uploaded" && <Share url={img.url} />}
       </div>
       <Footer />
     </>
