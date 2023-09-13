@@ -1,16 +1,14 @@
 import styles from "./Uploader.module.scss";
 import { useDropzone } from "react-dropzone";
 import Axios from "axios";
-import SnackBar from "../SnackBar";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useContext } from "react";
 import { ReactComponent as ImageSample } from "../../assets/image.svg";
+import { StatusContext } from "../../context";
 
-interface Props {
-  getURL: (data: string) => void;
-}
-
-export default function Uploader({ getURL }: Props) {
+export default function Uploader() {
   const [image, setImage] = useState<string>("");
+  const { status, handleStatus } = useContext(StatusContext);
+  let teste: string;
 
   const imgUpload = async (file: File) => {
     const formData = new FormData();
@@ -20,13 +18,16 @@ export default function Uploader({ getURL }: Props) {
 
     await Axios.post("https://api.cloudinary.com/v1_1/guipaex/image/upload", formData).then((response) => {
       data = response.data["secure_url"];
-      getURL(data);
+      status.url = data;
+      teste = "uploaded";
+      handleStatus({ stat: teste, url: status.url });
     });
     return data;
   };
 
   const imgSubmit = async (file: File) => {
     try {
+      handleStatus({ stat: "loading", url: "" });
       setImage(await imgUpload(file));
     } catch (error) {
       console.error(error);
