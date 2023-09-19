@@ -1,7 +1,7 @@
 import styles from "./Uploader.module.scss";
 import { useDropzone } from "react-dropzone";
 import Axios from "axios";
-import React, { useCallback, useContext } from "react";
+import React, { ChangeEvent, useCallback, useContext } from "react";
 import { ReactComponent as ImageSample } from "../../assets/image.svg";
 import { StatusContext } from "../../context";
 
@@ -35,12 +35,20 @@ export default function Uploader() {
     }
   };
 
+  const handleImage = (event: ChangeEvent<HTMLInputElement>) => {
+    let files = event.target.files;
+    if (files) {
+      let img = files[0];
+      imgSubmit(img);
+    }
+  };
+
   const onDrop = useCallback((acceptedFiles: File[]) => {
     let img = acceptedFiles[0];
     imgSubmit(img);
   }, []);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  const { getRootProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
       "image/jpg": [".jpg"],
@@ -50,10 +58,10 @@ export default function Uploader() {
   });
 
   return (
-    <div className={styles.container} {...getRootProps()}>
+    <div className={styles.container}>
       <h1 className={styles.container__title}>Upload your image</h1>
       <p className={styles.container__subtitle}>File should be Jpeg, Png,...</p>
-      <div className={styles.dropContainer}>
+      <label className={styles.dropContainer} {...getRootProps()} htmlFor='input-btn'>
         {isDragActive ? (
           <div className={styles.dragActive}>
             <p className={styles.dragActive__txt}>Drop the files here...</p>
@@ -65,12 +73,12 @@ export default function Uploader() {
             <h2 className={styles.dropContainer__txt}>Drag & Drop your image here</h2>
           </div>
         )}
-      </div>
+      </label>
       <p className={styles.dropContainer__txt}>Or</p>
       <label htmlFor='input-btn' className={styles.uploadButton}>
         Choose a file
       </label>
-      <input id='input-btn' {...getInputProps} type='file' hidden />
+      <input id='input-btn' onChange={handleImage} type='file' hidden />
     </div>
   );
 }
